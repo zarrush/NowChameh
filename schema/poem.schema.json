@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NowChameh Poem",
+  "description": "Schema for Persian modern poetry.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "poet_id",
+    "title",
+    "collection",
+    "form",
+    "stanzas",
+    "source"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "poet_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "collection": {
+      "type": ["string", "null"]
+    },
+    "form": {
+      "type": "string",
+      "enum": [
+        "nimaee",
+        "free_verse",
+        "modern_ghazal",
+        "chaharpareh",
+        "other"
+      ]
+    },
+    "stanzas": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
